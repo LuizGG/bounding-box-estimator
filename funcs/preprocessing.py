@@ -31,7 +31,6 @@ def resize_images(df_images, size): # Assumes image sizes are regular
 
         imageio.imwrite(values['new_file_name'], new_img)
 
-    # new_df_images['file_name'] = 'data/retail_product/sampled_images/' + new_df_images['id'].astype(str) + '_' + new_df_images['source'] + '.jpg'
     new_df_images['new_width'] = size
     new_df_images['new_height'] = size
     new_df_images['width_ratio'] = size/new_df_images['width']
@@ -53,7 +52,7 @@ def to_gray(df_images):
 
          img = imageio.imread(values['file_name'])
 
-         gray_img = rgb2gray(img).astype(np.uint8)
+         gray_img = (rgb2gray(img)*255).astype(np.uint8) # Multypling by 255 since the function rescales the image to 0-1 scale
 
          imageio.imwrite(values['new_file_name'], gray_img)
     
