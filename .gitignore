@@ -1,0 +1,4 @@
+data/cgi_planes/
+data/retail_product/test2019/
+data/retail_product/val2019/
+data/retail_product/*.zip
