@@ -4,14 +4,15 @@ import imageio
 from skimage.transform import resize
 from skimage.color import rgb2gray
 
-def read_data():
+def read_data(prefix_images='', prefix_annotations=''):
 
-    train_val_images = pd.read_pickle('data/retail_product/train_val_images.pkl')
-    train_val_annotations = pd.read_pickle('data/retail_product/train_val_annotations.pkl')
-    test_images = pd.read_pickle('data/retail_product/test_images.pkl')
-    test_annotations = pd.read_pickle('data/retail_product/test_annotations.pkl')
+    base_images_path = f'data/retail_product/{prefix_images}train_val_images.pkl'
+    base_annotations_path = f'data/retail_product/{prefix_annotations}train_val_annotations.pkl'
 
-    return train_val_images, train_val_annotations, test_images, test_annotations
+    train_val_images = pd.read_pickle(base_images_path)
+    train_val_annotations = pd.read_pickle(base_annotations_path)
+
+    return train_val_images, train_val_annotations
 
 def resize_images(df_images, size): # Assumes image sizes are regular
 
