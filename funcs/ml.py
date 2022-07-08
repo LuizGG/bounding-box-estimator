@@ -106,10 +106,10 @@ class IntensityHistogram(TransformerMixin, BaseEstimator):
 
         return new_X
 
-def train_isoforest(X, nbins, ntrees=100, seed=1):
+def train_isoforest(X, nbins, ntrees=100, max_samples='auto', seed=1):
 
     pipeline = Pipeline([('feature_descriptor', IntensityHistogram(nbins=nbins)), # Method to compute the intensity Histogram
-                    ('clf', IsolationForest(n_estimators=ntrees, n_jobs=-1, random_state=seed))])
+                    ('clf', IsolationForest(n_estimators=ntrees, max_samples=max_samples, n_jobs=-1, random_state=seed))])
 
     pipeline.fit(X)
 

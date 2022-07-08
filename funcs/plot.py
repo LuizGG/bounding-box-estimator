@@ -1,6 +1,8 @@
 import matplotlib.pyplot as plt
 import matplotlib.patches as patches
 import imageio
+from skimage.filters import threshold_otsu
+from skimage.measure import label, regionprops
 
 def show_image(image_id, df_images, plot_bboxes=False, df_annotations=None, ax=None):
 
@@ -24,3 +26,14 @@ def show_image(image_id, df_images, plot_bboxes=False, df_annotations=None, ax=N
             ax.add_patch(patch)
         
     return ax
+
+def labels_with_otsu(img):
+
+    trsh = threshold_otsu(img)
+    binary_img = img > trsh
+
+    label_img = label(binary_img)
+
+    labels = regionprops
+
+    return labels
