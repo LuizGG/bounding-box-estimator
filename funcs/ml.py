@@ -34,8 +34,7 @@ def images_as_patches(imgs_array, patch_size):
 
     width = patch_size[1]
     channels = imgs_array.shape[-1] < 4
-     # We flatten the patches since we will take the histogram and the matrix format isn't necessary
-   
+    # We flatten the patches since we will take the histogram and the matrix format isn't necessary
     if channels:
         img_patches = view_as_blocks(imgs_array, patch_size).copy().reshape(-1, width**2, 3)
     else: 
@@ -123,7 +122,7 @@ def eval_model(X, pipeline):
     transformed_x = pipeline.steps[0][1].fit_transform(X) # Accessing the histogram method
 
     # Getting the silhouette score which is a metric to evaluate the homogeneity of clusters
-    # While it is not measured on our ideal clusters, i.e the objects, a good anomaly detection system will split into groups that are very dissimilar
+    # While it is not measured on our ideal clusters, i.e the objects. A good anomaly detection system will split into groups that are very dissimilar
     score = silhouette_score(transformed_x, predicted_outliers)
     
     return score

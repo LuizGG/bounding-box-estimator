@@ -29,11 +29,16 @@ def show_image(image_id, df_images, plot_bboxes=False, df_annotations=None, ax=N
 
 def labels_with_otsu(img):
 
+    """
+    Gladly based on 
+    https://scikit-image.org/docs/stable/auto_examples/segmentation/plot_label.html#sphx-glr-auto-examples-segmentation-plot-label-py
+    """
+
     trsh = threshold_otsu(img)
     binary_img = img > trsh
 
     label_img = label(binary_img)
 
-    labels = regionprops
+    labels = regionprops(label_img)
 
     return labels
