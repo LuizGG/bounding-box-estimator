@@ -1,6 +1,7 @@
 # bounding-box-estimator
 
 Final project for SCC5830/MAI5021
+
 Luiz Giordani
 
 ## Table of contents
